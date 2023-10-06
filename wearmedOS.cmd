@@ -28,22 +28,22 @@ if "%OSVer%" neq "Windows 11" (set OSVer=Unsupported OS)
 :main
 echo.                                      
 echo.                                      
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  wearmedOS Utility Version: 1
+echo    Wwwwwwwwwwwwwww   wwwwwwwwwwwwwwW  wearmedOS Utility Version: 1
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  %OSVer% (%BuildNumber%)
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  Made by wearmed and galexitc
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo.                                        
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
+echo    wwwwwwwwwwwwwwW   Wwwwwwwwwwwwwww
+echo.
+echo    wwwwwwwwwwwwwwW   Wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww                
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo.                                      
+echo    Wwwwwwwwwwwwwww   wwwwwwwwwwwwwwW
+echo.
 echo   ============================
 echo   1. Optimisations
 echo   2. Other scripts
@@ -52,7 +52,7 @@ echo   4. Fix Windows Updates
 echo   5. Join my discord server!
 echo   ============================
 echo.    
-                                  
+
 set /p option=Enter the option number: 
 if %option%==1 goto optimisations
 if %option%==2 goto scripts
