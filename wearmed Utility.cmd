@@ -1,5 +1,5 @@
 @echo off
-title wearmedOS Utility
+title wearmed Utility
 
 IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
 >nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
@@ -28,21 +28,21 @@ if "%OSVer%" neq "Windows 11" (set OSVer=Unsupported OS)
 :main
 echo.                                      
 echo.                                      
-echo    Wwwwwwwwwwwwwww   wwwwwwwwwwwwwwW  wearmed Utility "Dev"
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  wearmed Utility "Dev"
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  %OSVer% (%BuildNumber%)
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  Made by wearmed and galexitc
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwwW   Wwwwwwwwwwwwwww
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo.
-echo    wwwwwwwwwwwwwwW   Wwwwwwwwwwwwwww
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww                
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    Wwwwwwwwwwwwwww   wwwwwwwwwwwwwwW
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo.
 echo   ============================
 echo   1. Optimisations
@@ -60,13 +60,8 @@ if %option%==3 goto apps
 if %option%==4 goto fixupdates
 if %option%==5 goto discord
 
-:discord
-start https://discord.gg/8h24nAHe2k
-cls
-goto main
-
 :optimisations
-title wearmedOS Utility - Optimisations
+title wearmed Utility - Optimisations
 cls
 echo.                                       
 echo.                                     
@@ -77,7 +72,7 @@ echo    5. Disable telemetry                          6. Run ShutUp10
 echo    7. Enable/disable hibernation                 8. Run disk cleanup
 echo   ======================================================================
 echo.
-echo. 
+echo.
 
 set /p option=Enter the option number:
 if %option%==1 goto services
@@ -89,41 +84,3 @@ if %option%==6 goto stfu
 if %option%==7 goto hibernation
 if %option%==8 goto cleanup
 
-:scripts
-cls
-echo Feature currently not available
-pause
-goto main
-
-:apps
-cls
-echo Feature currently not available
-pause
-goto main
-
-:fixupdates
-
-set /p option=Your computer will reboot, do you want to run the fix? (y/n):
-if %option%==y goto gloze
-if %option%==n goto main
-
-:gloze
-
-net Stop bits
-net Stop wuauserv
-echo Press "y" when prompted
-echo.
-net Stop appidsvc
-net Stop cryptsvc
-
-ren %systemroot%\SoftwareDistribution SoftwareDistribution.bak 
-ren %systemroot%s\system32\catroot2 catroot2.bak 
-
-net Start bits
-net Start wuauserv
-net Start appidsvc
-net Start cryptsvc
-
-shutdown /r /t 10
-
-echo The sytstem will reboot in 10 seconds
