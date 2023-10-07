@@ -48,7 +48,7 @@ echo   ============================
 echo   1. Optimisations
 echo   2. Other scripts
 echo   3. Applications
-echo   4. Fix Windows Updates
+echo   4. Troubleshooting
 echo   5. Join my discord server!
 echo   ============================
 echo.    
@@ -57,7 +57,7 @@ set /p option=Enter the option number:
 if %option%==1 goto optimisations
 if %option%==2 goto scripts
 if %option%==3 goto apps
-if %option%==4 goto fixupdates
+if %option%==4 goto troubleshoot
 if %option%==5 goto discord
 
 :optimisations
