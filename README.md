@@ -2,4 +2,4 @@
 
 
 
-A script for wearmedOS/Windows 11
+<p align="center">A script for wearmedOS/Windows 11</p>
