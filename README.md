@@ -1,4 +1,4 @@
-<h1 align="center">wearmedOS-Utility</h1>
+<h1 align="center">wearmedUtil</h1>
 
 
 
