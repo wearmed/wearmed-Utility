@@ -2,24 +2,8 @@
 @echo off
 title wearmed Utility
 
-IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
->nul 2>&1 "%SYSTEMROOT%\SysWOW64\cacls.exe" "%SYSTEMROOT%\SysWOW64\config\system"
-) ELSE (
->nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
-)
-if '%errorlevel%' NEQ '0' (
-    echo Requesting administrative privileges...
-    goto UACPrompt
-) else ( goto gotAdmin )
-:UACPrompt
-    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
-    set params= %*
-    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%\getadmin.vbs"
-
-    "%temp%\getadmin.vbs" & del "%temp%\getadmin.vbs" & exit /B
-:gotAdmin
-    pushd "%CD%"
-    CD /D "%~dp0"
+openfiles >nul 2>&1
+if errorlevel 1 PowerShell -Command "Start-Process -Verb RunAs -FilePath '%comspec%' -ArgumentList '/c %~dpnx0'" & exit
 
 for /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "CurrentBuildNumber"') do set BuildNumber=%%b
 
@@ -29,20 +13,20 @@ set OSVer=Unsupported OS
 :main
 echo.                                      
 echo.                                      
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  wearmed Utility "Dev"
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  %OSVer% (%BuildNumber%)
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  Made by wearmed and galexitc
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  wearmedUtil "Dev"
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  %OSVer% (%BuildNumber%)
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww  
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo.
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww                
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
-echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww   Made by:
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww   wearmed
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww   galexit          
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww   
+echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww   
 echo    wwwwwwwwwwwwwww   wwwwwwwwwwwwwww
 echo.
 echo   ============================
