@@ -23,8 +23,8 @@ if '%errorlevel%' NEQ '0' (
 
 for /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "CurrentBuildNumber"') do set BuildNumber=%%b
 
-if /I %BuildNumber% GEQ 21996 set OSVer=Windows 11
-if "%OSVer%" neq "Windows 11" (set OSVer=Unsupported OS)
+if /I %BuildNumber% GEQ 21996 set OSVer=Windows 11 & goto main
+set OSVer=Unsupported OS
 
 :main
 echo.                                      
