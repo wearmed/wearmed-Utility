@@ -4,9 +4,7 @@ title wearmed Utility
 
 openfiles >nul 2>&1
 if errorlevel 1 PowerShell -Command "Start-Process -Verb RunAs -FilePath '%comspec%' -ArgumentList '/c %~dpnx0'" & exit
-goto check
 
-:check
 reg Query "HKLM\Hardware\Description\System\CentralProcessor\0" | find /i "x86" >nul && set Arch=x86 || set Arch=x64
 for /F "tokens=2* skip=2" %%a in ('reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "CurrentBuildNumber"') do set BuildNumber=%%b
 if /I %BuildNumber% GEQ 21996 set OSVer=Windows 11 & goto main
